@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GTM-ready Demo Website</title>
+  <meta name="description" content="Simple demo website prepared for practicing Google Tag Manager tags, triggers and dataLayer pushes." />
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TNQ4P35P');</script>
+<!-- End Google Tag Manager -->
+
+  <style>
+    /* Simple, attractive styles — responsive */
+    :root{--accent:#4f46e5;--muted:#6b7280}
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, Arial, sans-serif;margin:0;color:#111;background:#f8fafc}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    header{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    nav a{margin-left:14px;color:var(--muted);text-decoration:none}
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:center;margin:28px 0}
+    .card{background:white;border-radius:12px;padding:20px;box-shadow:0 6px 18px rgba(15,23,42,0.06)}
+    h1{margin:0 0 8px 0;font-size:28px}
+    p.lead{margin:0;color:var(--muted)}
+    .btn{display:inline-block;padding:10px 14px;border-radius:8px;background:var(--accent);color:white;text-decoration:none;font-weight:600}
+    .products{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:18px}
+    .product{padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfbfd);border:1px solid #eceff6}
+    .product h3{margin:8px 0 6px 0;font-size:16px}
+    .price{color:var(--accent);font-weight:700}
+    .form-row{display:flex;gap:8px}
+    input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e9f2}
+    footer{margin-top:36px;text-align:center;color:var(--muted);padding:18px 4px}
+    @media(max-width:880px){.hero{grid-template-columns:1fr;}.brand span{display:none}}
+  </style>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TNQ4P35P"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <!-- Helpful note (visible in page source):
+       1) Replace both GTM placeholders with the exact snippets GTM provides.
+       2) The "head" snippet goes into <head>; the "body" snippet goes right after <body>.
+       3) This site contains example elements and JavaScript that push events to dataLayer so you can test tags/triggers in GTM preview mode.
+  -->
+
+  <script>
+    // Ensure dataLayer exists for immediate pushes
+    window.dataLayer = window.dataLayer || [];
+    function gtagPush(obj){
+      window.dataLayer.push(obj);
+      console.log('dataLayer push:', obj);
+    }
+
+    // Example: push a page_view when page loads (GTM/GA4 commonly uses this)
+    gtagPush({event: 'page_view', page: {path: location.pathname, title: document.title}});
+  </script>
+
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">G</div>
+        <div>
+          <strong>GTM Demo</strong>
+          <div style="font-size:12px;color:var(--muted)">Practice site for tags & triggers</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#products">Products</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <div class="card">
+          <h1>Simple demo site to practice GTM</h1>
+          <p class="lead">Isme buttons, product list aur form diye hue hain — aap inpe tags/trigger laga ke events capture kar sakte ho.</p>
+          <p style="margin-top:12px">
+            <a href="#products" class="btn" id="cta-shop">Shop Products</a>
+            <a href="#contact" class="btn" style="background:#06b6d4;margin-left:8px" id="cta-contact">Contact Us</a>
+          </p>
+          <p style="margin-top:12px;color:var(--muted);font-size:13px">Tip: In GTM preview mode, dekhna console aur dataLayer updates.</p>
+        </div>
+      </div>
+
+      <aside>
+        <div class="card">
+          <h3>Quick actions</h3>
+          <ul style="padding-left:18px;margin:8px 0;color:var(--muted)">
+            <li>Click "Add to cart" buttons to push ecommerce events</li>
+            <li>Submit contact form to test form submission triggers</li>
+            <li>Use element visibility triggers on product cards</li>
+          </ul>
+          <div style="margin-top:12px;font-size:13px;color:var(--muted)">Container ID placeholder: <strong id="gtm-id">GTM-XXXXXXX</strong></div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="products">
+      <h2 style="margin-bottom:6px">Products</h2>
+      <div class="products" id="product-grid">
+
+        <!-- Product example items with data attributes (use these in GTM as CSS selectors or variables) -->
+        <div class="product card" data-product-id="p001" data-product-name="Blue T-Shirt" data-product-price="699">
+          <img src="https://via.placeholder.com/300x160?text=Blue+T-Shirt" alt="Blue T-Shirt" style="width:100%;border-radius:8px;object-fit:cover;height:140px"/>
+          <h3>Blue T-Shirt</h3>
+          <div class="price">₹699</div>
+          <p style="font-size:13px;color:var(--muted)">Comfort cotton tee — demo product.</p>
+          <p style="margin-top:8px"><button class="btn add-to-cart">Add to cart</button></p>
+        </div>
+
+        <div class="product card" data-product-id="p002" data-product-name="Sneakers" data-product-price="2999">
+          <img src="https://via.placeholder.com/300x160?text=Sneakers" alt="Sneakers" style="width:100%;border-radius:8px;object-fit:cover;height:140px"/>
+          <h3>Sneakers</h3>
+          <div class="price">₹2,999</div>
+          <p style="font-size:13px;color:var(--muted)">Lightweight running shoes.</p>
+          <p style="margin-top:8px"><button class="btn add-to-cart">Add to cart</button></p>
+        </div>
+
+        <div class="product card" data-product-id="p003" data-product-name="Backpack" data-product-price="1499">
+          <img src="https://via.placeholder.com/300x160?text=Backpack" alt="Backpack" style="width:100%;border-radius:8px;object-fit:cover;height:140px"/>
+          <h3>Backpack</h3>
+          <div class="price">₹1,499</div>
+          <p style="font-size:13px;color:var(--muted)">Everyday carry backpack.</p>
+          <p style="margin-top:8px"><button class="btn add-to-cart">Add to cart</button></p>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="contact" style="margin-top:24px">
+      <h2>Contact Us</h2>
+      <div class="card" style="margin-top:8px">
+        <form id="contact-form">
+          <div style="display:grid;gap:8px">
+            <input type="text" name="name" placeholder="Your name" required />
+            <input type="email" name="email" placeholder="Your email" required />
+            <textarea name="message" rows="4" placeholder="Message" required></textarea>
+            <div style="display:flex;gap:8px;align-items:center">
+              <button class="btn" type="submit">Send message</button>
+              <div style="font-size:13px;color:var(--muted)">Or click <a href="#" id="demo-download">here</a> to download sample PDF</div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div>© 2025 GTM Demo — practice site for tags & triggers</div>
+    </footer>
+  </div>
+
+  <script>
+    // Add listeners to CTA buttons to push events
+    document.getElementById('cta-shop').addEventListener('click', function(e){
+      gtagPush({event: 'cta_click', label: 'shop', category: 'navigation'});
+    });
+    document.getElementById('cta-contact').addEventListener('click', function(e){
+      gtagPush({event: 'cta_click', label: 'contact', category: 'navigation'});
+    });
+
+    // Add-to-cart handling: push ecommerce event with product details from data attributes
+    document.querySelectorAll('.add-to-cart').forEach(function(btn){
+      btn.addEventListener('click', function(e){
+        var productEl = e.target.closest('.product');
+        var id = productEl.getAttribute('data-product-id');
+        var name = productEl.getAttribute('data-product-name');
+        var price = productEl.getAttribute('data-product-price');
+
+        var payload = {
+          event: 'add_to_cart',
+          ecommerce: {
+            currency: 'INR',
+            items: [{item_id: id, item_name: name, price: price, quantity: 1}]
+          }
+        };
+        gtagPush(payload);
+
+        // Optional: show small UI feedback
+        e.target.innerText = 'Added ✓';
+        setTimeout(function(){ e.target.innerText = 'Add to cart'; }, 1200);
+      });
+    });
+
+    // Contact form submission push
+    document.getElementById('contact-form').addEventListener('submit', function(e){
+      e.preventDefault();
+      var form = e.target;
+      var name = form.name.value;
+      var email = form.email.value;
+
+      gtagPush({event: 'contact_form_submit', formName: 'contact', name: name, email: email});
+
+      // Simulate submission success
+      alert('Thank you! Your message is received (demo).');
+      form.reset();
+    });
+
+    // Demo download link pushes event
+    document.getElementById('demo-download').addEventListener('click', function(e){
+      e.preventDefault();
+      gtagPush({event: 'file_download', fileName: 'sample.pdf', fileUrl: '/assets/sample.pdf'});
+      alert('Pretend download started (demo).');
+    });
+
+    // Example: element visibility push when product grid is visible (simple)
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          gtagPush({event:'element_visible', element: entry.target.getAttribute('data-product-id') || 'product-grid'});
+        }
+      });
+    }, {threshold:0.4});
+    document.querySelectorAll('.product').forEach(function(p){ observer.observe(p); });
+
+  </script>
+</body>
+</html>
